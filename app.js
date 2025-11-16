@@ -1,8 +1,10 @@
 import express from "express";
+import dotenv from "dotenv";
 
-import connectDB from "./config/db.js";
+import {connectDB} from "./config/db.js";
 
 import studentRoutes from "./routes/studentRoutes.js"
+dotenv.config(); //to load the env variables 
 
 // create the express application 
 const app = express();

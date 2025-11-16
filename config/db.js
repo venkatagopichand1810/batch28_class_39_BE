@@ -1,10 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const connectDB = () => {
-    mongoose.connect("mongodb://127.0.0.1:27017/batch28andbatch26")
-        .then(() => console.log("Mongodb connected successfully"))
-        .catch((err) => console.log(err))
+dotenv.config(); //to load the env variables 
+
+// function to connect to mongodb
+export const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        console.log("MongoDB connected successfully")
+
+    } catch(err){
+        console.log("failed to connect to the DB")
+    }
 }
-
-
-export default connectDB
